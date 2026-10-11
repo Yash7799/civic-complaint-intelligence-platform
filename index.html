@@ -1,385 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CivicPulse AI | Civic Complaint Intelligence Platform</title>
-    <meta
-      name="description"
-      content="AI-powered civic complaint intelligence platform for automatic complaint understanding, prioritization, duplicate detection, department assignment, and decision support for government officials."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <header class="site-header">
-      <div class="container nav">
-        <div class="brand">
-          <div class="brand-mark">C</div>
-          <span>CivicPulse AI</span>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CivicPulse AI</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">CivicPulse AI</div>
+      <nav>
+        <a href="#features">Features</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#impact">Impact</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="btn">Book Demo</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-box">
+      <div class="hero-text">
+        <span class="tag">Smart Governance</span>
+        <h1>AI-Powered Civic Complaint Intelligence Platform</h1>
+        <p>
+          Automatically understands complaints, prioritizes them, assigns them to the right department,
+          detects duplicates, and helps government officials make better decisions.
+        </p>
+        <div class="buttons">
+          <button class="btn primary">Get Started</button>
+          <button class="btn secondary">Request Demo</button>
         </div>
-
-        <nav class="desktop-nav">
-          <a href="#platform">Platform</a>
-          <a href="#workflow">Workflow</a>
-          <a href="#solutions">Solutions</a>
-          <a href="#impact">Impact</a>
-          <a href="#contact">Contact</a>
-        </nav>
-
-        <button class="nav-cta">Book Demo</button>
       </div>
-    </header>
 
-    <main>
-      <section class="hero">
-        <div class="container hero-grid">
-          <div class="hero-copy">
-            <span class="eyebrow">Smart governance, faster action</span>
-            <h1>AI-powered civic complaint intelligence for smarter city operations.</h1>
-            <p>
-              CivicPulse AI automatically understands citizen complaints, detects urgency,
-              identifies duplicate reports, routes cases to the correct department, and equips
-              government officials with actionable decision support.
-            </p>
+      <div class="hero-panel">
+        <div class="panel-head">
+          <span class="dot"></span>
+          <span>City Operations Overview</span>
+        </div>
 
-            <div class="hero-actions">
-              <button class="primary-btn">Request Demo</button>
-              <button class="secondary-btn">See Platform</button>
-            </div>
-
-            <ul class="trust-list">
-              <li>Complaint classification</li>
-              <li>Priority scoring</li>
-              <li>Department routing</li>
-            </ul>
+        <div class="stats">
+          <div class="stat-box highlight">
+            <small>Live Complaints</small>
+            <strong>2,480</strong>
           </div>
-
-          <div class="hero-visual">
-            <div class="dashboard-card main-panel">
-              <div class="card-header">
-                <span class="status-dot"></span>
-                <span>City Operations Dashboard</span>
-              </div>
-
-              <div class="metric-row">
-                <div class="metric-box highlight">
-                  <span class="metric-label">Live Complaints</span>
-                  <strong>2,480</strong>
-                  <small>+18.4% this week</small>
-                </div>
-                <div class="metric-box">
-                  <span class="metric-label">Resolved</span>
-                  <strong>1,120</strong>
-                  <small>Across 14 agencies</small>
-                </div>
-              </div>
-
-              <div class="chart-area">
-                <div class="bars">
-                  <span style="height: 35%"></span>
-                  <span style="height: 48%"></span>
-                  <span style="height: 52%"></span>
-                  <span style="height: 66%"></span>
-                  <span style="height: 58%"></span>
-                  <span style="height: 76%"></span>
-                  <span style="height: 92%"></span>
-                </div>
-                <div class="line-legend">
-                  <span class="legend-point green"></span>
-                  <span>Operational efficiency</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="mini-panel complaint-panel">
-              <div class="mini-title">Priority Queue</div>
-              <div class="complaint-item">
-                <div>
-                  <strong>Water leakage</strong>
-                  <small>Roads & Utilities</small>
-                </div>
-                <span class="badge high">High</span>
-              </div>
-              <div class="complaint-item">
-                <div>
-                  <strong>Streetlight outage</strong>
-                  <small>Public Works</small>
-                </div>
-                <span class="badge medium">Medium</span>
-              </div>
-              <div class="complaint-item">
-                <div>
-                  <strong>Waste collection delay</strong>
-                  <small>Sanitation</small>
-                </div>
-                <span class="badge low">Low</span>
-              </div>
-            </div>
+          <div class="stat-box">
+            <small>Resolved</small>
+            <strong>1,120</strong>
           </div>
         </div>
-      </section>
 
-      <section class="partners">
-        <div class="container partner-grid">
-          <span>Trusted for civic transformation</span>
-          <div class="partner-logos">
-            <span>Municipal Ops</span>
-            <span>Urban Systems</span>
-            <span>Smart City Lab</span>
-            <span>Public Service</span>
-          </div>
+        <div class="chart">
+          <span style="height: 35%"></span>
+          <span style="height: 45%"></span>
+          <span style="height: 55%"></span>
+          <span style="height: 65%"></span>
+          <span style="height: 75%"></span>
+          <span style="height: 90%"></span>
         </div>
-      </section>
-
-      <section id="platform" class="section">
-        <div class="container">
-          <div class="section-header">
-            <span class="eyebrow">Why it matters</span>
-            <h2>Modern cities face a growing stream of complaints. CivicPulse helps turn noise into action.</h2>
-          </div>
-
-          <div class="feature-grid">
-            <article class="feature-card">
-              <div class="icon">🧠</div>
-              <h3>Complaint understanding</h3>
-              <p>
-                Uses AI-powered natural language processing to interpret complaint context,
-                extract service issues, urgency, location, and citizen sentiment from unstructured text.
-              </p>
-            </article>
-
-            <article class="feature-card">
-              <div class="icon">⚡</div>
-              <h3>Priority intelligence</h3>
-              <p>
-                Scores incidents based on impact, severity, recurrence, vulnerable community risk,
-                and public safety implications to highlight what deserves immediate attention.
-              </p>
-            </article>
-
-            <article class="feature-card">
-              <div class="icon">🔁</div>
-              <h3>Duplicate detection</h3>
-              <p>
-                Identifies repeated reports by matching complaint narratives, locations, categories,
-                timestamps, and service patterns to reduce duplication and improve consistency.
-              </p>
-            </article>
-
-            <article class="feature-card">
-              <div class="icon">🏛️</div>
-              <h3>Department assignment</h3>
-              <p>
-                Routes every complaint to the most relevant municipal department using rule-based logic,
-                service taxonomy, and AI-based classification for faster resolution.
-              </p>
-            </article>
-
-            <article class="feature-card">
-              <div class="icon">📊</div>
-              <h3>Decision support</h3>
-              <p>
-                Gives officials explanations, risk summaries, operational insights, and recommended next steps
-                to support evidence-based governance decisions.
-              </p>
-            </article>
-
-            <article class="feature-card">
-              <div class="icon">📈</div>
-              <h3>Operational visibility</h3>
-              <p>
-                Tracks resolution trends, backlog pressure, SLA risks, and departmental performance through
-                an integrated civic intelligence dashboard.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="workflow" class="section alt-bg">
-        <div class="container">
-          <div class="section-header narrow">
-            <span class="eyebrow">How the platform works</span>
-            <h2>From complaint intake to resolution insight</h2>
-          </div>
-
-          <div class="timeline">
-            <div class="timeline-item">
-              <span class="timeline-step">01</span>
-              <div>
-                <h3>Complaint intake</h3>
-                <p>Citizen complaints arrive via web forms, mobile apps, IVR, WhatsApp, emails, or field reports.</p>
-              </div>
-            </div>
-
-            <div class="timeline-item">
-              <span class="timeline-step">02</span>
-              <div>
-                <h3>AI text understanding</h3>
-                <p>The system parses language, tags categories, detects issues, extracts geolocation, and identifies urgency.</p>
-              </div>
-            </div>
-
-            <div class="timeline-item">
-              <span class="timeline-step">03</span>
-              <div>
-                <h3>Duplicate & risk analysis</h3>
-                <p>Similar complaints are clustered and linked to prior cases, preventing duplicate handling and flagging risky patterns.</p>
-              </div>
-            </div>
-
-            <div class="timeline-item">
-              <span class="timeline-step">04</span>
-              <div>
-                <h3>Smart assignment</h3>
-                <p>AI routes cases to the right government department using category mapping, location rules, and workload capacity.</p>
-              </div>
-            </div>
-
-            <div class="timeline-item">
-              <span class="timeline-step">05</span>
-              <div>
-                <h3>Official decision support</h3>
-                <p>Dashboards show severity, recommended action, prior case history, department context, and field guidance.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="solutions" class="section">
-        <div class="container split-layout">
-          <div class="panel left-panel">
-            <span class="eyebrow">Complaint intelligence</span>
-            <h2>Designed for departments, agencies, and city leadership.</h2>
-            <ul class="check-list">
-              <li>Automatic complaint categorization and topic extraction</li>
-              <li>Sentiment and urgency detection across citizen reports</li>
-              <li>Duplicate cluster resolution to prevent wasted effort</li>
-              <li>Department-wise complaint allocation based on jurisdiction</li>
-              <li>Cross-agency prioritization for emergency and critical issues</li>
-              <li>Decision-ready insights for city leaders and field teams</li>
-            </ul>
-          </div>
-
-          <div class="panel right-panel">
-            <div class="case-card">
-              <div class="case-head">
-                <span class="status-pill">Duplicate detected</span>
-                <time>09:42 AM</time>
-              </div>
-
-              <h3>Blocked drainage causing waterlogging near market road</h3>
-              <p>
-                Similar complaint already logged 3 hours ago in same ward with same issue pattern.
-                Recommended consolidation and escalation to roads & drainage unit.
-              </p>
-
-              <div class="case-meta">
-                <span>Ward: 12</span>
-                <span>Severity: Critical</span>
-              </div>
-
-              <div class="suggestion-box">
-                <strong>Recommended action:</strong>
-                <p>Escalate to Public Works and dispatch inspection team within 60 minutes.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="impact" class="section metrics-section">
-        <div class="container">
-          <div class="section-header center">
-            <span class="eyebrow">Impact</span>
-            <h2>Improve citizen trust and public service efficiency.</h2>
-          </div>
-
-          <div class="metrics-grid">
-            <div class="mini-metric">
-              <strong>72%</strong>
-              <span>faster triage</span>
-            </div>
-            <div class="mini-metric">
-              <strong>58%</strong>
-              <span>duplicate reduction</span>
-            </div>
-            <div class="mini-metric">
-              <strong>40%</strong>
-              <span>lower resolution time</span>
-            </div>
-            <div class="mini-metric">
-              <strong>95%</strong>
-              <span>department routing accuracy</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section department-section">
-        <div class="container">
-          <div class="section-header narrow">
-            <span class="eyebrow">Department coverage</span>
-            <h2>Built for city service ecosystems.</h2>
-          </div>
-
-          <div class="dept-grid">
-            <div class="dept-card">
-              <span>🚰</span>
-              <h3>Water & Sewer</h3>
-            </div>
-            <div class="dept-card">
-              <span>🛣️</span>
-              <h3>Roads & Transport</h3>
-            </div>
-            <div class="dept-card">
-              <span>🧹</span>
-              <h3>Sanitation</h3>
-            </div>
-            <div class="dept-card">
-              <span>💡</span>
-              <h3>Street Lighting</h3>
-            </div>
-            <div class="dept-card">
-              <span>🏥</span>
-              <h3>Health Services</h3>
-            </div>
-            <div class="dept-card">
-              <span>🚨</span>
-              <h3>Public Safety</h3>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" class="section cta-section">
-        <div class="container cta-box">
-          <div>
-            <span class="eyebrow">Future-ready governance</span>
-            <h2>Transform complaint management into a smarter, faster city response system.</h2>
-          </div>
-          <button class="primary-btn">Book a Strategy Call</button>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <div class="brand footer-brand">
-          <div class="brand-mark">C</div>
-          <span>CivicPulse AI</span>
-        </div>
-        <p>AI-powered civic complaint intelligence for cities, agencies, and public services.</p>
       </div>
-    </footer>
+    </div>
+  </section>
 
-    <script src="script.js"></script>
-  </body>
+  <section id="features" class="section">
+    <div class="container">
+      <div class="section-title">
+        <span class="tag">Features</span>
+        <h2>Built to turn civic complaints into action.</h2>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>Complaint Understanding</h3>
+          <p>AI reads complaint text and extracts urgency, location, issue type, and context.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Priority Scoring</h3>
+          <p>Ranks complaints based on severity, urgency, impact, and public risk.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Duplicate Detection</h3>
+          <p>Finds repeated complaints and merges them to reduce duplicate workload.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Department Routing</h3>
+          <p>Assigns complaints to the correct department based on issue and jurisdiction.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Decision Support</h3>
+          <p>Helps officials understand risk, patterns, and recommended next actions.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Operational Visibility</h3>
+          <p>Shows real-time metrics, trends, backlog, and issue resolution status.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="workflow" class="section alt-bg">
+    <div class="container">
+      <div class="section-title">
+        <span class="tag">Workflow</span>
+        <h2>From intake to resolution.</h2>
+      </div>
+
+      <div class="workflow-grid">
+        <div class="step">
+          <span>01</span>
+          <h3>Complaint Intake</h3>
+          <p>Complaints come in through apps, web forms, calls, and field reports.</p>
+        </div>
+        <div class="step">
+          <span>02</span>
+          <h3>AI Analysis</h3>
+          <p>The platform identifies issue category, urgency, and department fit.</p>
+        </div>
+        <div class="step">
+          <span>03</span>
+          <h3>Duplicate Check</h3>
+          <p>Similar complaints are matched and consolidated to avoid duplication.</p>
+        </div>
+        <div class="step">
+          <span>04</span>
+          <h3>Department Assignment</h3>
+          <p>Cases are routed automatically to the right civic unit or agency.</p>
+        </div>
+        <div class="step">
+          <span>05</span>
+          <h3>Decision Support</h3>
+          <p>Officials review insights and recommendations for faster action.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="impact" class="section">
+    <div class="container">
+      <div class="section-title center">
+        <span class="tag">Impact</span>
+        <h2>Improves governance and public service efficiency.</h2>
+      </div>
+
+      <div class="impact-grid">
+        <div class="impact-item">
+          <strong>72%</strong>
+          <span>Faster triage</span>
+        </div>
+        <div class="impact-item">
+          <strong>58%</strong>
+          <span>Duplicate reduction</span>
+        </div>
+        <div class="impact-item">
+          <strong>40%</strong>
+          <span>Shorter resolution time</span>
+        </div>
+        <div class="impact-item">
+          <strong>95%</strong>
+          <span>Routing accuracy</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section department-section">
+    <div class="container">
+      <div class="section-title">
+        <span class="tag">Departments</span>
+        <h2>Supports city departments and agencies.</h2>
+      </div>
+
+      <div class="department-grid">
+        <div class="dept-box">Water & Sewer</div>
+        <div class="dept-box">Roads & Transport</div>
+        <div class="dept-box">Sanitation</div>
+        <div class="dept-box">Street Lighting</div>
+        <div class="dept-box">Health Services</div>
+        <div class="dept-box">Public Safety</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section callout">
+    <div class="container callout-box">
+      <div>
+        <span class="tag">Future-ready governance</span>
+        <h2>Turn civic complaint management into a smarter city response system.</h2>
+      </div>
+      <button class="btn primary">Book a Strategy Call</button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-box">
+      <div class="logo">CivicPulse AI</div>
+      <p>AI-powered civic complaint intelligence for cities, agencies, and public institutions.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
 </html>

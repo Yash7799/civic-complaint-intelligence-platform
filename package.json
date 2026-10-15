@@ -1,6 +1,6 @@
 {
   "name": "civicpulse-backend",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Backend for CivicPulse AI demo - complaint intake API with image upload and SQLite storage",
   "main": "server.js",
   "scripts": {
@@ -8,8 +8,10 @@
     "dev": "nodemon server.js"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "express": "^4.18.2",
+    "express-session": "^1.17.3",
     "multer": "^1.4.5-lts.1",
     "sqlite3": "^5.1.6"
   }

@@ -1,13 +1,16 @@
-// server.js updated: add admin routes and complaint update endpoints
+// server.js updated: add simple admin authentication (session + bcrypt), protect admin and modify endpoints
 const express = require('express');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 const sqlite3 = require('sqlite3').verbose();
 const cors = require('cors');
+const session = require('express-session');
+const bcrypt = require('bcryptjs');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const SESSION_SECRET = process.env.SESSION_SECRET || 'change_this_in_production';
 
 // Ensure folders exist
 const UPLOAD_DIR = path.join(__dirname, 'uploads');
@@ -46,6 +49,7 @@ function ensureColumn(column, definition) {
   });
 }
 
+// create complaints table + additional columns if needed
 db.serialize(() => {
   db.run(`
     CREATE TABLE IF NOT EXISTS complaints (
@@ -72,11 +76,43 @@ db.serialize(() => {
   });
 });
 
+// Simple admin user storage (data/admin.json)
+const ADMIN_FILE = path.join(DATA_DIR, 'admin.json');
+function ensureAdminUser() {
+  if (fs.existsSync(ADMIN_FILE)) return;
+  // create default admin: username: admin password: admin123 (please change)
+  const pw = 'admin123';
+  const hash = bcrypt.hashSync(pw, 10);
+  const admin = { username: 'admin', passwordHash: hash };
+  fs.writeFileSync(ADMIN_FILE, JSON.stringify(admin, null, 2));
+  console.log('Created default admin user: username=admin password=admin123 — change this in data/admin.json or set up env vars');
+}
+ensureAdminUser();
+
+function verifyAdminCredentials(username, password) {
+  if (!fs.existsSync(ADMIN_FILE)) return false;
+  const admin = JSON.parse(fs.readFileSync(ADMIN_FILE, 'utf8'));
+  if (admin.username !== username) return false;
+  return bcrypt.compareSync(password, admin.passwordHash);
+}
+
+// Middleware
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(session({ secret: SESSION_SECRET, resave: false, saveUninitialized: false }));
 app.use('/uploads', express.static(UPLOAD_DIR));
 app.use(express.static(path.join(__dirname)));
+
+function requireAuth(req, res, next) {
+  if (req.session && req.session.isAdmin) return next();
+  // if AJAX request, return 401 JSON
+  if (req.headers.accept && req.headers.accept.indexOf('application/json') !== -1) {
+    return res.status(401).json({ error: 'Not authorized' });
+  }
+  // otherwise redirect to login
+  return res.redirect('/admin-login.html');
+}
 
 // API: submit complaint
 app.post('/api/complaints', upload.array('images', 6), (req, res) => {
@@ -102,18 +138,17 @@ app.post('/api/complaints', upload.array('images', 6), (req, res) => {
   }
 });
 
-// API: list complaints (admin)
+// API: list complaints (public read)
 app.get('/api/complaints', (req, res) => {
   db.all('SELECT * FROM complaints ORDER BY created_at DESC LIMIT 1000', [], (err, rows) => {
     if (err) return res.status(500).json({ error: 'DB error' });
-    // parse images JSON
     rows = rows.map(r => ({ ...r, images: r.images ? JSON.parse(r.images) : [], status: r.status || 'open' }));
     res.json(rows);
   });
 });
 
-// API: assign department
-app.post('/api/complaints/:id/assign', (req, res) => {
+// API: assign department (protected)
+app.post('/api/complaints/:id/assign', requireAuth, (req, res) => {
   const id = req.params.id;
   const { department } = req.body;
   db.run('UPDATE complaints SET department = ? WHERE id = ?', [department || '', id], function(err) {
@@ -122,8 +157,8 @@ app.post('/api/complaints/:id/assign', (req, res) => {
   });
 });
 
-// API: update status
-app.post('/api/complaints/:id/status', (req, res) => {
+// API: update status (protected)
+app.post('/api/complaints/:id/status', requireAuth, (req, res) => {
   const id = req.params.id;
   const { status } = req.body;
   db.run('UPDATE complaints SET status = ? WHERE id = ?', [status || 'open', id], function(err) {
@@ -132,12 +167,32 @@ app.post('/api/complaints/:id/status', (req, res) => {
   });
 });
 
-// Serve admin UI
-app.get('/admin', (req, res) => {
+// Authentication endpoints
+app.post('/login', (req, res) => {
+  const { username, password } = req.body;
+  if (verifyAdminCredentials(username, password)) {
+    req.session.isAdmin = true;
+    req.session.adminUser = username;
+    return res.json({ success: true });
+  }
+  return res.status(401).json({ error: 'Invalid credentials' });
+});
+
+app.post('/logout', (req, res) => {
+  req.session.destroy(() => res.json({ success: true }));
+});
+
+// Serve admin UI (protected)
+app.get('/admin', requireAuth, (req, res) => {
   res.sendFile(path.join(__dirname, 'admin.html'));
 });
 
-// Serve uploads and frontend
+// Serve admin login page
+app.get('/admin-login.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'admin-login.html'));
+});
+
+// Serve frontend
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });

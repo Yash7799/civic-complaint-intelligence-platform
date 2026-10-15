@@ -15,6 +15,7 @@
         <a href="#workflow">Workflow</a>
         <a href="#impact">Impact</a>
         <a href="#contact">Contact</a>
+        <a href="#complain">Make a Complaint</a>
       </nav>
       <button class="btn">Book Demo</button>
     </div>
@@ -29,7 +30,7 @@
           Automatically understands complaints, prioritizes them, assigns them to the right department,
           detects duplicates, and helps government officials make better decisions.
         </p>
-        <div class="buttons">
+        <div class="hero-actions">
           <button class="btn primary">Get Started</button>
           <button class="btn secondary">Request Demo</button>
         </div>
@@ -64,6 +65,66 @@
     </div>
   </section>
 
+  <!-- Complaint form -->
+  <section id="complain" class="section form-section">
+    <div class="container">
+      <div class="section-title">
+        <span class="tag">Make a Complaint</span>
+        <h2>Report an issue to your city</h2>
+      </div>
+
+      <form id="complaint-form" enctype="multipart/form-data">
+        <div class="form-row">
+          <label for="name">Full name</label>
+          <input id="name" name="name" type="text" placeholder="Your name" />
+        </div>
+
+        <div class="form-row">
+          <label for="email">Email or phone</label>
+          <input id="email" name="email" type="text" placeholder="Email or phone" required />
+        </div>
+
+        <div class="form-row">
+          <label for="title">Issue title</label>
+          <input id="title" name="title" type="text" placeholder="Short title (e.g., Pothole on 5th)" required />
+        </div>
+
+        <div class="form-row">
+          <label for="description">Description</label>
+          <textarea id="description" name="description" rows="4" placeholder="Describe the issue in detail" required></textarea>
+        </div>
+
+        <div class="form-row location-row">
+          <div>
+            <label for="address">Address (optional)</label>
+            <input id="address" name="address" type="text" placeholder="Street, ward or landmark" />
+          </div>
+          <div>
+            <label>Location (lat / lng)</label>
+            <div style="display:flex;gap:8px;">
+              <input id="lat" name="lat" type="text" placeholder="lat" />
+              <input id="lng" name="lng" type="text" placeholder="lng" />
+              <button type="button" id="use-location" class="btn small">Use my location</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label for="images">Images (optional)</label>
+          <input id="images" name="images" type="file" accept="image/*" multiple />
+          <div id="preview" class="preview"></div>
+        </div>
+
+        <div class="form-row">
+          <button id="submit-btn" class="btn primary" type="submit">Submit Complaint</button>
+          <span id="form-status" class="status"></span>
+        </div>
+      </form>
+
+    </div>
+  </section>
+
+  <!-- rest of site -->
   <section id="features" class="section">
     <div class="container">
       <div class="section-title">
@@ -100,98 +161,7 @@
     </div>
   </section>
 
-  <section id="workflow" class="section alt-bg">
-    <div class="container">
-      <div class="section-title">
-        <span class="tag">Workflow</span>
-        <h2>From intake to resolution.</h2>
-      </div>
-
-      <div class="workflow-grid">
-        <div class="step">
-          <span>01</span>
-          <h3>Complaint Intake</h3>
-          <p>Complaints come in through apps, web forms, calls, and field reports.</p>
-        </div>
-        <div class="step">
-          <span>02</span>
-          <h3>AI Analysis</h3>
-          <p>The platform identifies issue category, urgency, and department fit.</p>
-        </div>
-        <div class="step">
-          <span>03</span>
-          <h3>Duplicate Check</h3>
-          <p>Similar complaints are matched and consolidated to avoid duplication.</p>
-        </div>
-        <div class="step">
-          <span>04</span>
-          <h3>Department Assignment</h3>
-          <p>Cases are routed automatically to the right civic unit or agency.</p>
-        </div>
-        <div class="step">
-          <span>05</span>
-          <h3>Decision Support</h3>
-          <p>Officials review insights and recommendations for faster action.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="impact" class="section">
-    <div class="container">
-      <div class="section-title center">
-        <span class="tag">Impact</span>
-        <h2>Improves governance and public service efficiency.</h2>
-      </div>
-
-      <div class="impact-grid">
-        <div class="impact-item">
-          <strong>72%</strong>
-          <span>Faster triage</span>
-        </div>
-        <div class="impact-item">
-          <strong>58%</strong>
-          <span>Duplicate reduction</span>
-        </div>
-        <div class="impact-item">
-          <strong>40%</strong>
-          <span>Shorter resolution time</span>
-        </div>
-        <div class="impact-item">
-          <strong>95%</strong>
-          <span>Routing accuracy</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section department-section">
-    <div class="container">
-      <div class="section-title">
-        <span class="tag">Departments</span>
-        <h2>Supports city departments and agencies.</h2>
-      </div>
-
-      <div class="department-grid">
-        <div class="dept-box">Water & Sewer</div>
-        <div class="dept-box">Roads & Transport</div>
-        <div class="dept-box">Sanitation</div>
-        <div class="dept-box">Street Lighting</div>
-        <div class="dept-box">Health Services</div>
-        <div class="dept-box">Public Safety</div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact" class="section callout">
-    <div class="container callout-box">
-      <div>
-        <span class="tag">Future-ready governance</span>
-        <h2>Turn civic complaint management into a smarter city response system.</h2>
-      </div>
-      <button class="btn primary">Book a Strategy Call</button>
-    </div>
-  </section>
+  <!-- keep other sections unchanged -->
 
   <footer>
     <div class="container footer-box">

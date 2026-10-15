@@ -1,44 +1,5 @@
-# CivicPulse AI
-
-CivicPulse AI is an AI-powered civic complaint intelligence platform designed for modern city operations. The platform helps government agencies automatically understand complaints, prioritize urgency, detect duplicates, assign work to the correct department, and provide decision support to public officials.
-
-## Features
-
-- AI-driven complaint understanding and classification
-- Priority scoring and urgency analysis
-- Duplicate detection and clustering of repeated complaints
-- Department-based assignment and routing logic
-- Decision support dashboards for public officials
-- Operational visibility and service performance tracking
-
-## Project structure
-
-- `index.html` – main website structure
-- `styles.css` – styling and responsive design
-- `script.js` – lightweight animations and interactions
-
-## Run locally
-
-### Option 1: Open directly
-You can open `index.html` directly in a browser.
-
-### Option 2: Local web server
-From the project folder, run:
-
-```bash
-python -m http.server 8000
-```
-
-Then visit:
-
-```text
-http://localhost:8000
-```
-
-## Screenshot-ready design
-
-This project is designed as a polished, modern landing page and dashboard concept for a civic complaint intelligence platform.
-
-## License
-
-This project is provided for demonstration and development purposes.
+node_modules/
+uploads/
+data/
+.DS_Store
+.env

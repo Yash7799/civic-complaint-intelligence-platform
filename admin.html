@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CivicPulse Admin</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* small admin overrides */
+    .admin-container { padding: 28px; }
+    .admin-header { display:flex;align-items:center;justify-content:space-between;margin-bottom:18px; }
+    table { width:100%; border-collapse: collapse; }
+    th, td { padding: 10px; border-bottom: 1px solid rgba(16,32,51,0.06); text-align:left; vertical-align:top; }
+    img.thumb { width:80px; height:60px; object-fit:cover; border-radius:6px; margin-right:6px; }
+    .actions { display:flex; gap:8px; align-items:center; }
+    .status-open{ color:#0b6ef5; font-weight:700 }
+    .status-resolved{ color:#168b73; font-weight:700 }
+    .status-escalated{ color:#df4b43; font-weight:700 }
+    .small-input{ padding:6px 8px; border-radius:8px; border:1px solid rgba(16,32,51,0.08); }
+    .filter-row{ display:flex; gap:10px; align-items:center; margin-bottom:12px; }
+  </style>
+</head>
+<body>
+  <div class="container admin-container">
+    <div class="admin-header">
+      <h1>Complaints - Admin Dashboard</h1>
+      <div>
+        <a href="/" class="btn">Back to site</a>
+      </div>
+    </div>
+
+    <div class="filter-row">
+      <label>Filter by status:
+        <select id="filter-status" class="small-input">
+          <option value="">All</option>
+          <option value="open">Open</option>
+          <option value="in-progress">In Progress</option>
+          <option value="resolved">Resolved</option>
+          <option value="escalated">Escalated</option>
+        </select>
+      </label>
+      <label>Search title or description:
+        <input id="filter-search" class="small-input" placeholder="search..." />
+      </label>
+      <button id="apply-filters" class="btn">Apply</button>
+    </div>
+
+    <div id="list-wrap">
+      <table id="complaints-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Reporter</th>
+            <th>Contact</th>
+            <th>Location</th>
+            <th>Images</th>
+            <th>Status</th>
+            <th>Created</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

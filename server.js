@@ -1,3 +1,4 @@
+// server.js updated: add admin routes and complaint update endpoints
 const express = require('express');
 const multer = require('multer');
 const path = require('path');
@@ -31,6 +32,20 @@ const upload = multer({ storage: storage, limits: { fileSize: 8 * 1024 * 1024 } 
 const dbPath = path.join(DATA_DIR, 'complaints.db');
 const db = new sqlite3.Database(dbPath);
 
+function ensureColumn(column, definition) {
+  return new Promise((resolve, reject) => {
+    db.all(`PRAGMA table_info(complaints)`, [], (err, rows) => {
+      if (err) return reject(err);
+      const exists = rows.some(r => r.name === column);
+      if (exists) return resolve();
+      db.run(`ALTER TABLE complaints ADD COLUMN ${column} ${definition}`, (err2) => {
+        if (err2) return reject(err2);
+        resolve();
+      });
+    });
+  });
+}
+
 db.serialize(() => {
   db.run(`
     CREATE TABLE IF NOT EXISTS complaints (
@@ -45,7 +60,16 @@ db.serialize(() => {
       images TEXT,
       created_at TEXT
     )
-  `);
+  `, async (err) => {
+    if (err) console.error(err);
+    try {
+      await ensureColumn('status', "TEXT DEFAULT 'open'");
+      await ensureColumn('department', "TEXT DEFAULT ''");
+      await ensureColumn('priority', "TEXT DEFAULT ''");
+    } catch (e) {
+      console.error('Error ensuring columns', e);
+    }
+  });
 });
 
 app.use(cors());
@@ -80,12 +104,37 @@ app.post('/api/complaints', upload.array('images', 6), (req, res) => {
 
 // API: list complaints (admin)
 app.get('/api/complaints', (req, res) => {
-  db.all('SELECT * FROM complaints ORDER BY created_at DESC LIMIT 200', [], (err, rows) => {
+  db.all('SELECT * FROM complaints ORDER BY created_at DESC LIMIT 1000', [], (err, rows) => {
     if (err) return res.status(500).json({ error: 'DB error' });
     // parse images JSON
-    rows = rows.map(r => ({ ...r, images: r.images ? JSON.parse(r.images) : [] }));
+    rows = rows.map(r => ({ ...r, images: r.images ? JSON.parse(r.images) : [], status: r.status || 'open' }));
     res.json(rows);
   });
+});
+
+// API: assign department
+app.post('/api/complaints/:id/assign', (req, res) => {
+  const id = req.params.id;
+  const { department } = req.body;
+  db.run('UPDATE complaints SET department = ? WHERE id = ?', [department || '', id], function(err) {
+    if (err) return res.status(500).json({ error: 'DB error' });
+    res.json({ success: true });
+  });
+});
+
+// API: update status
+app.post('/api/complaints/:id/status', (req, res) => {
+  const id = req.params.id;
+  const { status } = req.body;
+  db.run('UPDATE complaints SET status = ? WHERE id = ?', [status || 'open', id], function(err) {
+    if (err) return res.status(500).json({ error: 'DB error' });
+    res.json({ success: true });
+  });
+});
+
+// Serve admin UI
+app.get('/admin', (req, res) => {
+  res.sendFile(path.join(__dirname, 'admin.html'));
 });
 
 // Serve uploads and frontend

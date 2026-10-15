@@ -1,32 +1,21 @@
-# CivicPulse AI
+# CivicPulse AI - Admin Dashboard
 
-This repository contains a demo front-end and a simple Node/Express backend to accept civic complaints with images and location data.
+This update adds a simple admin dashboard so officials can view, filter, assign, and resolve citizen complaints.
 
-## What I added
+New files:
+- admin.html - lightweight admin interface to list complaints and act on them
+- admin.js - client script for the admin UI
+- Updated server.js - added database columns (status, department, priority) and endpoints:
+  - GET /api/complaints - list complaints
+  - POST /api/complaints/:id/assign - assign a department
+  - POST /api/complaints/:id/status - update status (open, in-progress, resolved, escalated)
+  - GET /admin - serves the admin UI
 
-- A complaint submission form on the public site (index.html) with fields: name, contact (email/phone), title, description, address, latitude/longitude, images (multiple).
-- Client-side JS to preview images, use browser geolocation, and submit the form to the backend.
-- Backend (server.js) using Express + Multer + SQLite to store complaints and uploaded images.
-- Static file serving so you can run the app locally and submit complaints.
+How to run locally:
+1. npm install
+2. node server.js
+3. Visit http://localhost:3000/admin to access the admin dashboard
 
-## Run locally
-
-1. Clone the repo and open in VS Code.
-2. Install Node.js (v16+ recommended).
-3. From the project root run:
-
-```bash
-npm install
-node server.js
-```
-
-4. Open your browser to `http://localhost:3000`.
-
-5. The API endpoints:
-- POST /api/complaints (multipart/form-data) – submit a complaint. Field names: name, email, title, description, address, lat, lng, images (multiple)
-- GET /api/complaints – list recent complaints (JSON)
-
-Files uploaded are stored in `/uploads` and the SQLite database is at `/data/complaints.db`.
-
-## Notes
-- This is a demo; for production you should add authentication, input validation, rate-limiting, virus scanning for uploads, HTTPS, and cloud storage for images.
+Notes:
+- This is a demo admin UI without authentication. Do NOT expose it publicly without adding access controls.
+- For production, add authentication, pagination, search indexes, and role-based permissions.
